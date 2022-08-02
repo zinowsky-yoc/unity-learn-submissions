@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    private float m_speed = 50f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float m_Speed = 50f;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +17,7 @@ public class MovementController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        Vector3 movement = new Vector3(horizontalInput * m_speed * Time.deltaTime, 0, verticalInput * m_speed * Time.deltaTime);
+        Vector3 movement = new Vector3(horizontalInput * m_Speed * Time.deltaTime, 0, verticalInput * m_Speed * Time.deltaTime);
         transform.Translate(movement, transform);
     }
 }
