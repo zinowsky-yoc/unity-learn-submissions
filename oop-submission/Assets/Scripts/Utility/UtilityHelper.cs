@@ -6,11 +6,12 @@ using UnityEngine;
 public abstract class UtilityHelper
 {
     // POLYMORPHISM 
-    public static Vector3 CalculateDistance(Vector3 origin, Vector3 remote) {
-        return remote - origin;
+    public static Vector3 CalculateMoveTo(Vector3 origin, Vector3 remote) {
+        Vector3 moveTo = (remote - origin);
+        return moveTo;
     }
 
-    public static Vector3 CalculateDistance(Vector3 origin, Vector3 remote, float distance) {
+    public static Vector3 CalculateMoveTo(Vector3 origin, Vector3 remote, float distance) {
         Vector3 diff = remote - origin;
         float mag = diff.magnitude;
         if (mag < distance) {
@@ -18,5 +19,14 @@ public abstract class UtilityHelper
         }
         diff.Normalize();
         return (distance * diff) + origin;
+    }
+
+    public static bool IsInMagnitude(Vector3 origin, Vector3 remote, float magnitudeThreshold) {
+        float mag = (remote - origin).magnitude;
+        if (mag < magnitudeThreshold) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
